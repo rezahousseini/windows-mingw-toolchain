@@ -53,7 +53,7 @@ RUN git clone https://github.com/mxe/mxe/ /wd/mxe
 WORKDIR /wd/mxe
 
 #RUN make download
-RUN make MXE_TARGETS='x86_64-w64-mingw32.static x86_64-w64-mingw32.shared' --jobs=4 --keep-going cc libusb1
+RUN make MXE_TARGETS='x86_64-w64-mingw32.static x86_64-w64-mingw32.shared' --jobs=4 --keep-going cc libusb1 boost
 
 
 ENV PATH $PATH:/wd/mxe/usr/bin
