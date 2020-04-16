@@ -23,4 +23,4 @@ on Windows `cmd.exe`:
 
 ## Release build
 
-For a release build change the `--buildtype` flag to `release` and add the `--optimization=3` flag in the initialization step and change accordingly the folder name from `build-win-debug` to `build-win-release`.
+For a release build change the `--buildtype` flag to `release` in the configuration step and change accordingly the folder name from `build-win-debug` to `build-win-release`.
