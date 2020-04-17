@@ -53,4 +53,8 @@ RUN make PREFIX='/usr' MXE_TARGETS='x86_64-w64-mingw32.static x86_64-w64-mingw32
 ENV PATH /usr/bin/:$PATH
 ENV BOOST_ROOT /usr/x86_64-w64-mingw32.static:/usr/x86_64-w64-mingw32.shared
 
+# get [boost].sml headers
+RUN wget -O /usr/x86_64-w64-mingw32.static/include/boost/sml.hpp https://raw.githubusercontent.com/boost-experimental/sml/master/include/boost/sml.hpp && \
+    wget -O /usr/x86_64-w64-mingw32.shared/include/boost/sml.hpp https://raw.githubusercontent.com/boost-experimental/sml/master/include/boost/sml.hpp
+
 WORKDIR /usr/project
