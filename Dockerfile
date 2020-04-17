@@ -7,6 +7,7 @@ RUN	apt-get -y update && apt-get -y install	\
 		bash				\
 		bison				\
 		bzip2				\
+    cmake       \
 		flex				\
     g++				\
     g++-multilib			\
@@ -39,23 +40,17 @@ RUN	apt-get -y update && apt-get -y install	\
 # Install meson
 RUN pip3 install meson
 
-
-RUN	groupadd --gid 10000 mxe
-RUN	useradd --uid 10000 --gid 10000 mxe
-
-RUN	mkdir -p /wd && chown -R mxe:mxe /wd
+RUN	mkdir -p /wd
 WORKDIR	/wd
-
-USER mxe
 
 RUN git clone https://github.com/mxe/mxe/ /wd/mxe
 
 WORKDIR /wd/mxe
 
 #RUN make download
-RUN make MXE_TARGETS='x86_64-w64-mingw32.static x86_64-w64-mingw32.shared' --jobs=4 --keep-going cc libusb1 boost
+RUN make PREFIX='/usr' MXE_TARGETS='x86_64-w64-mingw32.static x86_64-w64-mingw32.shared' --jobs=4 --keep-going cc libusb1 boost
 
-
-ENV PATH $PATH:/wd/mxe/usr/bin
+ENV PATH /usr/bin/:$PATH
+ENV BOOST_ROOT /usr/x86_64-w64-mingw32.static:/usr/x86_64-w64-mingw32.shared
 
 WORKDIR /usr/project
