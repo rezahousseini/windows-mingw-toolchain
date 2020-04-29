@@ -48,7 +48,7 @@ RUN git clone https://github.com/mxe/mxe/ /wd/mxe
 WORKDIR /wd/mxe
 
 #RUN make download
-RUN make PREFIX='/usr' MXE_TARGETS='x86_64-w64-mingw32.static x86_64-w64-mingw32.shared' --jobs=4 --keep-going cc libusb1 boost
+RUN make PREFIX='/usr' MXE_PLUGIN_DIRS='plugins/gcc9 plugins/meson-wrapper' MXE_TARGETS='x86_64-w64-mingw32.static x86_64-w64-mingw32.shared' --jobs=4 --keep-going cc libusb1 boost
 
 ENV PATH /usr/bin/:$PATH
 ENV BOOST_ROOT /usr/x86_64-w64-mingw32.static:/usr/x86_64-w64-mingw32.shared
