@@ -37,18 +37,14 @@ RUN	apt-get -y update && apt-get -y install	\
 		wget				\
 		xz-utils
 
+# Install meson
+RUN pip3 install meson
+
 RUN	mkdir -p /wd
 WORKDIR	/wd
 
-# Download meson
-RUN git clone https://github.com/rezahousseini/meson.git /wd/meson
-
 # Download MXE
 RUN git clone https://github.com/rezahousseini/mxe.git /wd/mxe
-
-# Install meson
-WORKDIR /wd/meson
-RUN python3 setup.py install
 
 # Install MXE
 WORKDIR /wd/mxe
