@@ -52,6 +52,5 @@ WORKDIR /wd/mxe
 RUN make PREFIX='/usr' MXE_PLUGIN_DIRS='plugins/gcc9 plugins/meson-wrapper' MXE_TARGETS='x86_64-w64-mingw32.static x86_64-w64-mingw32.shared' --jobs=4 --keep-going cc libusb1 pthreads boost
 
 ENV PATH /usr/bin/:$PATH
-ENV BOOST_ROOT /usr/x86_64-w64-mingw32.static:/usr/x86_64-w64-mingw32.shared
 
 WORKDIR /usr/project
